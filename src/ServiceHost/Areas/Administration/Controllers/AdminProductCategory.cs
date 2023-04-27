@@ -1,7 +1,4 @@
-﻿using Framework.Shared.Resourses;
-using Framework.Utilities;
-using Framework.Utilities.ResultUtil;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using ShopManagement.Application.Contract.ProductCategoryApplication;
 
 namespace ServiceHost.Areas.Administration.Controllers;

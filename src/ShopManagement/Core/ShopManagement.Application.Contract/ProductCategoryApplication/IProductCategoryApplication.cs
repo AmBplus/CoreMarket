@@ -1,5 +1,4 @@
-﻿using Framework.Utilities.ResultUtil;
-
+﻿
 namespace ShopManagement.Application.Contract.ProductCategoryApplication;
 
 public interface IProductCategoryApplication

@@ -1,6 +1,3 @@
-using Framework.Asp.Infrastructure.Settings;
-using Framework.Infrastructure;
-using Framework.Utilities;
 using Microsoft.Extensions.Options;
 using NLog;
 using NLog.Web;

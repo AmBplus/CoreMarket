@@ -1,5 +1,4 @@
-﻿using Framework.Infrastructure.Repository;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using ShopManagement.Domain.ProductAggregate.ProductModel;
 
 namespace ShopManagement.Persistence.Repository;

@@ -1,6 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Ardalis.Specification;
-using Framework.Domain.Repository;
+using Base.Domain.Repository;
 
 namespace ShopManagement.Domain.ProductAggregate.ProductCategoryModel;
 

@@ -1,5 +1,3 @@
-using Framework.Asp.Infrastructure;
-using Framework.Shared.Resourses;
 using Mapster;
 using Microsoft.AspNetCore.Mvc;
 using ShopManagement.Application.Contract.Facade;

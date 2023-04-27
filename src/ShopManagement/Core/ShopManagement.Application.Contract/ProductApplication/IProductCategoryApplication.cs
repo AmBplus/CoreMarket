@@ -1,5 +1,4 @@
-﻿using Framework.Utilities.ResultUtil;
-
+﻿
 namespace ShopManagement.Application.Contract.ProductApplication;
 
 public interface IProductApplication

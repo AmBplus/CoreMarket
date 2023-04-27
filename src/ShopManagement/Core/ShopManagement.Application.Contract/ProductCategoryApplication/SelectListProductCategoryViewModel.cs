@@ -1,5 +1,4 @@
-﻿using Framework.Shared.Resourses;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Security.AccessControl;
 using System.Xml.Linq;
 

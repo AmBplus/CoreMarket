@@ -1,5 +1,4 @@
-﻿using Framework.Domain.BaseEntities;
-using ShopManagement.Domain.ProductAggregate.ProductModel;
+﻿using ShopManagement.Domain.ProductAggregate.ProductModel;
 
 namespace ShopManagement.Domain.ProductAggregate.ProductCategoryModel;
 

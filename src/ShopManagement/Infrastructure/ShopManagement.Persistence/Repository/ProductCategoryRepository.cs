@@ -1,7 +1,5 @@
 ﻿using System.Linq.Expressions;
 using Ardalis.Specification;
-using Framework.Infrastructure.Extensions;
-using Framework.Infrastructure.Repository;
 using Mapster;
 using MapsterMapper;
 using ShopManagement.Domain.ProductAggregate.ProductCategoryModel;

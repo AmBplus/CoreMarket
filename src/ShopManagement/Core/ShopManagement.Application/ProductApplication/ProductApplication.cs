@@ -1,8 +1,4 @@
-﻿using Framework.Application.Extensions;
-using Framework.Shared.Resourses;
-using Framework.Utilities;
-using Framework.Utilities.ResultUtil;
-using Mapster;
+﻿using Mapster;
 using ShopManagement.Application.Contract.Maping;
 using ShopManagement.Application.Contract.ProductApplication;
 using ShopManagement.Application.Contract.ProductApplication.ProductSpecification;

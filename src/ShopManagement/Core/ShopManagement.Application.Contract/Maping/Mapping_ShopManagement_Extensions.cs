@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Framework.Utilities;
 using ShopManagement.Application.Contract.ProductApplication;
 using ShopManagement.Application.Contract.ProductCategoryApplication;
 using ShopManagement.Domain.ProductAggregate.ProductModel;

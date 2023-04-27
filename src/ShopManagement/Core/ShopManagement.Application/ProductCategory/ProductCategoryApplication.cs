@@ -1,13 +1,10 @@
 ﻿using System.Data;
-using Framework.Application.Extensions;
-using Framework.Utilities.ResultUtil;
 using Mapster;
 using ShopManagement.Application.Contract.Sm.UnitOfWork;
 using ShopManagement.Domain.ProductAggregate.ProductCategoryModel;
 using Microsoft.Data.SqlClient;
 using ShopManagement.Application.Contract.Maping;
 using ShopManagement.Application.Contract.ProductCategoryApplication;
-using Framework.Utilities;
 
 namespace ShopManagement.Application.ProductCategory;
 

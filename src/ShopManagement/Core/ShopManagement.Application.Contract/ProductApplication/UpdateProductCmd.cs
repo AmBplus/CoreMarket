@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using Framework.Shared.Resourses;
 
 namespace ShopManagement.Application.Contract.ProductApplication;
 

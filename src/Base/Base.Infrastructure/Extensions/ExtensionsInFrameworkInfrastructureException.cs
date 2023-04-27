@@ -1,4 +1,6 @@
 ﻿
+using Base.Domain.Exceptions;
+
 namespace Base.Infrastructure.Extensions;
 
 public  static class ExtensionsInFrameworkInfrastructureException

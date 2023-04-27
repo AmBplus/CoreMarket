@@ -1,4 +1,5 @@
-﻿using ShopManagement.Application.Contract.Sm.UnitOfWork;
+﻿using Base.Infrastructure.UnitOfWork;
+using ShopManagement.Application.Contract.Sm.UnitOfWork;
 
 namespace ShopManagement.Persistence.unit_of_work_ef_core;
 

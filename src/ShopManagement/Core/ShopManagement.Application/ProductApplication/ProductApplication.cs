@@ -1,4 +1,8 @@
-﻿using Mapster;
+﻿using Base.Application.Extensions;
+using Base.Resourses;
+using Base.Shared;
+using Base.Shared.ResultUtil;
+using Mapster;
 using ShopManagement.Application.Contract.Maping;
 using ShopManagement.Application.Contract.ProductApplication;
 using ShopManagement.Application.Contract.ProductApplication.ProductSpecification;

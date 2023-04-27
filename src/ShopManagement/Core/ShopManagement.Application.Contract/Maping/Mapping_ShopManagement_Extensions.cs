@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using ShopManagement.Application.Contract.ProductApplication;
 using ShopManagement.Application.Contract.ProductCategoryApplication;
 using ShopManagement.Domain.ProductAggregate.ProductModel;
+using Base.Shared;
 
 namespace ShopManagement.Application.Contract.Maping
 {

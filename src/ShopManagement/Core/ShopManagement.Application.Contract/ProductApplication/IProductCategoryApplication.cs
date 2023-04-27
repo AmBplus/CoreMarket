@@ -1,4 +1,6 @@
 ﻿
+using Base.Shared.ResultUtil;
+
 namespace ShopManagement.Application.Contract.ProductApplication;
 
 public interface IProductApplication

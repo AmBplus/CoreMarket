@@ -1,3 +1,4 @@
+using Base.AspCoreUtility.Infrastructure.Settings;
 using Microsoft.Extensions.Options;
 using NLog;
 using NLog.Web;
@@ -16,8 +17,8 @@ try
 
     builder.Logging.ClearProviders();
     builder.Host.UseNLog();
-    builder.Services.AddSingleton<ILoggerManger, LoggerManger>();
-    builder.Services.AddSingleton(typeof(ILoggerManger<>), typeof(LoggerManger<>));
+    //builder.Services.AddSingleton<ILoggerManger, LoggerManger>();
+    //builder.Services.AddSingleton(typeof(ILoggerManger<>), typeof(LoggerManger<>));
     #endregion /NLog
 
     #region Routing

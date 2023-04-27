@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 namespace Base.Shared
 {
-    public static class GenerateSlug
+    public static class TextFixer
     {
         public static string Slugify(this string phrase)
         {

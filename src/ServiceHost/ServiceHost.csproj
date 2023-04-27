@@ -15,7 +15,12 @@
 
   <ItemGroup>
     <PackageReference Include="JqueryDataTables.ServerSide.AspNetCoreWeb" Version="4.0.0" />
+    <PackageReference Include="Mapster" Version="7.3.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
@@ -24,12 +29,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Framework\Framework.Asp\Framework.Asp.csproj" />
-    <ProjectReference Include="..\ShopManagement\Infrastructure\ShopManagement.Infrastructure\ShopManagement.Infrastructure.csproj" />
+    <Folder Include="Controller\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controller\" />
+    <ProjectReference Include="..\Base\Base.AspCoreUtility\Base.AspCoreUtility.csproj" />
+    <ProjectReference Include="..\Base\Base.Resourses\Base.Resourses.csproj" />
+    <ProjectReference Include="..\ShopManagement\Core\ShopManagement.Application.Contract\ShopManagement.Application.Contract.csproj" />
+    <ProjectReference Include="..\ShopManagement\Infrastructure\ShopManagement.Infrastructure\ShopManagement.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

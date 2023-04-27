@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Base.Domain.UnitOfWork;
+using Microsoft.EntityFrameworkCore;
 
 namespace Base.Infrastructure.UnitOfWork;
 

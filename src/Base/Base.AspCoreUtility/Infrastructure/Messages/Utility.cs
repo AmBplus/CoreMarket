@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Base.AspCoreUtility.Infrastructure.Messages;
+using Base.Shared;
 
 namespace Base.AspCoreUtility.Infrastructure.Messages;
 
@@ -12,11 +13,11 @@ public static class Utility
     (ITempDataDictionary tempData,
         MessageType type, string? message)
     {
-        message =
-            Framework.Utilities.Utility.FixText(text: message);
+       
 
         if (message == null) return false;
-
+        message =
+           message.Slugify(); // Need Change 
 
         List<string>? list;
 

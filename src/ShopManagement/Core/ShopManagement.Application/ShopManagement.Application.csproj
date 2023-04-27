@@ -7,12 +7,17 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\Base\Base.Application\Base.Application.csproj" />
     <ProjectReference Include="..\ShopManagement.Application.Contract\ShopManagement.Application.Contract.csproj" />
     <ProjectReference Include="..\ShopManagement.Domain\ShopManagement.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ProductCategory\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Mapster" Version="7.3.0" />
   </ItemGroup>
 
 </Project>

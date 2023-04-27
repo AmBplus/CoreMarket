@@ -1,0 +1,132 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+    var url = Url.Page("./index", "Ajax");
+}
+
+@section style
+{
+    <link href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css" rel="stylesheet"/>
+
+}
+<form id="frm">
+    <input id="#Age"name="age"  class="form-control"/>
+    <input  name="lastName"  class="form-control"/>
+    <input name="email"  class="form-control"/>
+</form>
+<input hidden id="dataAjaxUrl" value="@url"/>
+<table class="display" style="width: 100%" id="exaProgrammingmple">
+    <thead>
+    <tr>
+        <th>id</th>
+        <th>firstName</th>
+        <th>lastName</th>
+        <th>contact</th>
+        <th>email</th><th>Age</th>
+        <th>Check</th>
+        <th>dateOfBirth</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+<br/>
+<br/>
+<br/>
+<table class="display" style="width: 100%" id="inlineData">
+    <thead>
+    <tr>
+        <th>نام</th>
+        <th>نام خانوادگی</th>
+        <th>سن</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+@section Scripts
+{
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+    <script>
+        $("#exaProgrammingmple").DataTable({
+            "processing": true,
+            "serverSide": true,
+            "filter": true,
+            "ajax": {
+                "url": "https://localhost:7203/Test1/Index",
+                "type": "POST",
+                "datatype": "json",
+                "data": function(d) {
+                    var frm_data = $('#frm').serializeArray();
+                    $.each(frm_data, function(key, val) {
+                        d[val.name] = val.value;
+                        console.log(d);
+                        console.log(d.order[0]);
+                    });
+                }
+            },
+            // UnSearchable And Hidden Id
+            "columnDefs": [
+                {
+                    "targets": [0],
+                    "visible": false,
+                    "searchable": false
+                }
+            ],
+            "columns": [
+                { "data": "id", "name": "Id", "autoWidth": true },
+                { "data": "firstName", "name": "First Name", "autoWidth": true },
+                { "data": "lastName", "name": "Last Name", "autoWidth": true },
+                { "data": "contact", "name": "Country", "autoWidth": true },
+                { "data": "email", "name": "Email", "autoWidth": true },
+                { "data": "age", "name": "Age", "autoWidth": true },
+                {
+                    "render": function(data, row) {
+                        return "<a href='#' class='btn btn-danger' >Check</a>";
+                    }
+                },
+                { "data": "dateOfBirth", "name": "Date Of Birth", "autoWidth": true },
+                {
+                    "render": function(data, row) {
+                        return "<a href='#' class='btn btn-danger' onclick=DeleteCustomer('" + row.id + "'); >Delete</a>";
+                    }
+                },
+            ]
+        });
+        $(document).ready(function() {
+
+            $('#inlineData').DataTable({
+                "aaData": [
+                    { "FirstName": "پژمان", "LastName": "پارسائی", "Age": "24" },
+                    { "FirstName": "سعید", "LastName": "الیاسی", "Age": "25" },
+                    { "FirstName": "محمد رضا", "LastName": "گلزار", "Age": "24" },
+                    { "FirstName": "آرش", "LastName": "ایرانی", "Age": "24" },
+                    { "FirstName": "مرتضی", "LastName": "فرمانی", "Age": "24" },
+                    { "FirstName": "سعید", "LastName": "حمیدیان", "Age": "24" },
+                    { "FirstName": "امین", "LastName": "پارسانیا", "Age": "24" },
+                    { "FirstName": "محمد امین", "LastName": "فقیهی", "Age": "24" },
+                    { "FirstName": "محمد", "LastName": "خرمی", "Age": "24" },
+                    { "FirstName": "سینا", "LastName": "امیریان", "Age": "24" },
+                    { "FirstName": "آرش", "LastName": "ایرانی", "Age": "24" },
+                    { "FirstName": "وحید", "LastName": "فرزانه", "Age": "24" },
+                    { "FirstName": "امیر علی", "LastName": "فرمانی", "Age": "24" },
+                    { "FirstName": "امین", "LastName": "حسینی", "Age": "24" },
+                ],
+                "aoColumns": [
+                    {
+                        "data": "FirstName"
+                    },
+                    {
+                        "data": "LastName"
+                    },
+                    {
+                        "data": "Age"
+                    }
+                ]
+            });
+
+        });
+    </script>
+}

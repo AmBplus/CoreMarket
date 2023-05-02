@@ -94,8 +94,9 @@ public class ProductApplication : IProductApplication
 
     public async Task<ResultOperation<IEnumerable<ProductViewModel>>> Search(ProductSearchCmd searchModel , CancellationToken cancellationToken = default)
     {
-        var spec = new ProductSearchCondationSpec(searchModel);
+        var spec = new ProductSearchConditionSpec(searchModel);
         var result = await _repository.GetAll(spec);
+
         if (result == null)
         {
             return ResultOperation<IEnumerable<ProductViewModel>>.BuildFailedResult("لیست خالیست");

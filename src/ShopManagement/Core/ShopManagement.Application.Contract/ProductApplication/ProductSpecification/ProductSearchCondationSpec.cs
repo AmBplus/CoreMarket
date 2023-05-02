@@ -3,9 +3,9 @@ using ShopManagement.Domain.ProductAggregate.ProductModel;
 
 namespace ShopManagement.Application.Contract.ProductApplication.ProductSpecification;
 
-public class ProductSearchCondationSpec : Specification<ProductEntity>
+public class ProductSearchConditionSpec : Specification<ProductEntity>
 {
-    public ProductSearchCondationSpec(ProductSearchCmd productSearchCmd)
+    public ProductSearchConditionSpec(ProductSearchCmd productSearchCmd)
     {
         if (string.IsNullOrWhiteSpace(productSearchCmd.Name))
         {

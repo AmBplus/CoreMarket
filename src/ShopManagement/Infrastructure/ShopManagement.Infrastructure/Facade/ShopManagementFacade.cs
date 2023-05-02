@@ -19,7 +19,7 @@ public class ShopManagementFacade : IShopManagementFacade
 
     public IProductApplication Product 
         => _product ??= ServiceProvider.GetRequiredService<IProductApplication>();
-    private IProductApplication _product { get; set; }
+    private IProductApplication? _product { get; set; }
 
     public IServiceProvider ServiceProvider { get; }
 }

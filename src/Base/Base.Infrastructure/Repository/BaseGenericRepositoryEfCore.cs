@@ -32,13 +32,30 @@ public class BaseGenericRepository<Tkey, TEntity> : IBaseGenericRepository<Tkey,
         return await DbSetEntity.FindAsync(key);
     }
 
+    public async Task<TEntityDto?> Get<TEntityDto>(Tkey key, bool track = false, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
+
     public async Task<TEntity?> Get(Expression<Func<TEntity, bool>> filter, bool track = false,
         CancellationToken token = default)
     {
         return await DbSetEntity.Where(filter).HandleTracking(track).FirstOrDefaultAsync();
     }
 
+    public Task<TEntityDto?> Get<TEntityDto>(Expression<Func<TEntity, bool>> filter, bool track = false, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
+    }
 
+    /// <summary>
+    /// This Do Not Stop SqlInjection  , Carefull Using It , Parameter Must Send With SqlParameters
+    /// </summary>
+    /// <param name="query"></param>
+    /// <param name="parameters"></param>
+    /// <param name="track"></param>
+    /// <param name="token"></param>
+    /// <returns></returns>
     public async Task<IEnumerable<TEntity>> GetAll(string query, SqlParameter[] parameters,  bool track = false,
         CancellationToken token = default)
     {
@@ -67,6 +84,11 @@ public class BaseGenericRepository<Tkey, TEntity> : IBaseGenericRepository<Tkey,
     {
         var query = DbSetEntity.Where(filter).Select(select);
         return await query.HandleTracking(track).ToListAsync();
+    }
+
+    public Task<IEnumerable<TEntityDto>> GetAll<TEntityDto>(Expression<Func<TEntity?, bool>> filter, Expression<Func<TEntity?, TEntity>> select, bool track = false, CancellationToken token = default)
+    {
+        throw new NotImplementedException();
     }
 
     public async Task<IEnumerable<TEntity>> GetAll(ISpecification<TEntity> filter, bool track,

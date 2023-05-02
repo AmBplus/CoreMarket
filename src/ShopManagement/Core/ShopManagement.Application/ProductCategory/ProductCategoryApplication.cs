@@ -40,11 +40,11 @@ public class ProductCategoryApplication : IProductCategoryApplication
         var result = command.GetValidationResults();
         if (result.Count > 0)
         {
-            var errors = result.Select(x => x.ErrorMessage);
-            return ResultOperation.BuildFailedResult(errors!);
+            return result.GetFailedResultWithError_s();
         }
-        var entity = await _repository.Get(x => x.Id == command.Id);
+        var entity = await _repository.Get(x => x.Id == command.Id,true);
         if (entity == null) return ResultOperation.BuildFailedResult("دسته بندی محصول خواسته شده پیدا نشد");
+      
         await _repository.Update(command.MapToProductCategory(entity));
         await _unitOfWork.SaveChangesAsync();
         return ResultOperation.BuildSuccessResult();

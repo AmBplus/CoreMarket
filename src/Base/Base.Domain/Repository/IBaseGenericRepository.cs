@@ -12,8 +12,11 @@ public interface IBaseGenericRepository<Tkey, TEntity> where TEntity : BaseEntit
     // Query
     Task<bool> Any(Expression<Func<TEntity?, bool>> filter, CancellationToken token = default);
     Task<TEntity?> Get(Tkey key, bool track = false, CancellationToken token = default);
+    Task<TEntityDto?> Get<TEntityDto>(Tkey key, bool track = false, CancellationToken token = default);
+
     Task<TEntity?> Get(Expression<Func<TEntity, bool>> filter, bool track = false, CancellationToken token = default);
 
+    Task<TEntityDto?> Get<TEntityDto>(Expression<Func<TEntity, bool>> filter, bool track = false, CancellationToken token = default);
     Task<IEnumerable<TEntity>> GetAll(string query, SqlParameter[] parameters, bool track = false, CancellationToken token = default);
 
     Task<IEnumerable<TEntity?>> GetAll(Expression<Func<TEntity?, bool>> filter, bool track = false,
@@ -21,7 +24,15 @@ public interface IBaseGenericRepository<Tkey, TEntity> where TEntity : BaseEntit
 
     Task<IEnumerable<TEntity>> GetAll(Expression<Func<TEntity?, bool>> filter,
         Expression<Func<TEntity?, TEntity>> select, bool track = false, CancellationToken token = default);
+    //
 
+
+    
+    Task<IEnumerable<TEntityDto>> GetAll<TEntityDto>(Expression<Func<TEntity?, bool>> filter,
+        Expression<Func<TEntity?, TEntity>> select, bool track = false, CancellationToken token = default);
+
+
+    //
     Task<IEnumerable<TEntity>> GetAll(ISpecification<TEntity> filter, bool track = false,
         CancellationToken token = default);
 

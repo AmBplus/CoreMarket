@@ -16,6 +16,7 @@
   <ItemGroup>
     <PackageReference Include="JqueryDataTables.ServerSide.AspNetCoreWeb" Version="4.0.0" />
     <PackageReference Include="Mapster" Version="7.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.Server" Version="6.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.11">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -35,6 +36,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Base\Base.AspCoreUtility\Base.AspCoreUtility.csproj" />
     <ProjectReference Include="..\Base\Base.Resourses\Base.Resourses.csproj" />
+    <ProjectReference Include="..\BlazorAdmin\BlazorAdmin.csproj" />
+    <ProjectReference Include="..\BlazorShared\BlazorShared.csproj" />
     <ProjectReference Include="..\ShopManagement\Core\ShopManagement.Application.Contract\ShopManagement.Application.Contract.csproj" />
     <ProjectReference Include="..\ShopManagement\Infrastructure\ShopManagement.Infrastructure\ShopManagement.Infrastructure.csproj" />
   </ItemGroup>

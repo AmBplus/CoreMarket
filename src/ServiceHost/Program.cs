@@ -1,4 +1,5 @@
 using Base.AspCoreUtility.Infrastructure.Settings;
+using Blazored.LocalStorage;
 using Microsoft.Extensions.Options;
 using NLog;
 using NLog.Web;
@@ -36,7 +37,13 @@ try
     builder.Services.ShopManagementBootstrapper(builder.Configuration);
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     // Custom LogManger
-  
+
+    #region BlazorAdminService
+    builder.Services.AddBlazoredLocalStorage();
+    builder.Services.AddServerSideBlazor();
+
+
+    #endregion
 
     #region  ApplicationSettings 
 
@@ -57,7 +64,7 @@ try
     #endregion /ApplicationSettings
 
     // Add Application And Database Services
-
+    
 }
 catch (Exception e)
 {
@@ -85,6 +92,7 @@ if (!app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseBlazorFrameworkFiles();
 app.UseStaticFiles();
 
 app.UseRouting();

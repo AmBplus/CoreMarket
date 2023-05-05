@@ -1,17 +1,48 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        <NavMenu />
+
+<div id="wrapper">
+
+    <TopBar/>
+    <LeftSideBar/>
+
+    <!-- ============================================================== -->
+    <!-- Start right Content here -->
+    <!-- ============================================================== -->
+    <div class="content-page">
+        <!-- Start content -->
+       
+        @Body
+        <Footer></Footer>
+
     </div>
+    <!-- ============================================================== -->
+    <!-- End Right content here -->
+    <!-- ============================================================== -->
 
-    <main>
-        <div class="top-row px-4">
-            <a href="https://docs.microsoft.com/aspnet/" target="_blank">About</a>
-        </div>
+    <RightSideBar/>
 
-        <article class="content px-4">
-            @Body
-        </article>
-    </main>
 </div>
+
+@code
+{
+    [Inject]
+    public IJSRuntime JsRuntime { get; set; }
+
+  
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        
+
+            await JsRuntime.InvokeVoidAsync("AddSrc");
+
+        
+    }
+
+
+
+
+
+}

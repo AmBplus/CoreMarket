@@ -45,9 +45,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Infrastructure", "src\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Base.Domain", "src\Base\Base.Domain\Base.Domain.csproj", "{F4E27868-8514-43F0-8B01-E0C96E9E9606}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorAdmin", "src\BlazorAdmin\BlazorAdmin.csproj", "{2DBE9B65-4FA2-4D21-95F6-A57BDAE38681}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorAdmin", "src\BlazorAdmin\BlazorAdmin.csproj", "{2DBE9B65-4FA2-4D21-95F6-A57BDAE38681}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorShared", "src\BlazorShared\BlazorShared.csproj", "{8FB55048-21DC-4D4D-8E86-BDCD1057C2D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorShared", "src\BlazorShared\BlazorShared.csproj", "{8FB55048-21DC-4D4D-8E86-BDCD1057C2D7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

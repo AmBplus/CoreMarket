@@ -1,48 +1,117 @@
-﻿@inherits LayoutComponentBase
+﻿@using BlazorAdmin.Theme
+@inherits LayoutComponentBase
+
+<MudRTLProvider RightToLeft="true">
+
+    <MudThemeProvider Theme="_themeManager.Theme" IsDarkMode="@(light)"/>
+    <MudDialogProvider />
+    <MudSnackbarProvider />
+
+    <MudLayout>
+        <MudAppBar  Elevation="4">
+
+            <MudIconButton Size="Size.Large" Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
+            <MudHidden Breakpoint="Breakpoint.Xs">
+                <MudText Typo="Typo.h6" Class="ml-4">پنل مدیریت</MudText>
+            </MudHidden>
+            <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
+                <MudText Typo="Typo.subtitle2">پنل مدیریت</MudText>
+            </MudHidden>
+            <MudSpacer />
+            <MudSwitch   CheckedChanged="@(ChangeLight)"  Class="ml-4" T="bool" Label="@TitleToggle"/>
+
+            <MudMenu Class="ml-4" Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter" Dense="true">
+                <MudMenuItem>English</MudMenuItem>
+                <MudMenuItem>Swedish</MudMenuItem>
+                <MudMenuItem>Old Norse</MudMenuItem>
+            </MudMenu>
+
+            @* <MudMenu Icon="@Icons.Material.Outlined.Widgets" Color="Color.Inherit" Direction="Direction.Bottom" OffsetY="true" Dense="true"> *@
+            @*     <MudMenuItem Link="https://mudblazor.com/">MudBlazor</MudMenuItem> *@
+            @*     <MudMenuItem Link="https://github.com/Garderoben/MudBlazor.Templates">Source Code</MudMenuItem> *@
+            @* </MudMenu> *@
+            <MudMenu AnchorOrigin="Origin.TopRight" TransformOrigin="Origin.TopLeft" Dense="true" Class="mt-1 ml-4">
+                <ActivatorContent>
+                    <MudAvatar Image="assets/images/avatar-1.jpg" />
+                </ActivatorContent>
+                <ChildContent>
+                    <PersonCard Class="mt-n2" />
+                    <MudDivider Class="mb-2" />
+                    <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/personal/account" />
+                    <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/pages/authentication/login" />
+                </ChildContent>
+            </MudMenu>
+           
+        </MudAppBar>
+        <MudDrawer @bind-Open="_drawerOpen" Elevation="25" ClipMode="_themeManager.DrawerClipMode" Anchor="Anchor.Right" Style="direction: rtl !important" Width="33vh">
+            <NavMenu />
+        </MudDrawer>
+        <MudMainContent>
+            <MudHidden Breakpoint="Breakpoint.SmAndDown">
+                <MudToolBar DisableGutters="true">
+                    <MudSpacer />
+
+                </MudToolBar>
+            </MudHidden>
+            <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+                @Body
+            </MudContainer>
+        </MudMainContent>
+        <MudThemeManagerButton OnClick="@((e) => OpenThemeManager(true))" />
+        <MudThemeManager Open="_themeManagerOpen" OpenChanged="OpenThemeManager" Theme="_themeManager" ThemeChanged="UpdateTheme" />
+
+    </MudLayout>
+
+</MudRTLProvider>
 
 
-<div id="wrapper">
+@code {
+    private ThemeManagerTheme _themeManager = new ThemeManagerTheme();
 
-    <TopBar/>
-    <LeftSideBar/>
-
-    <!-- ============================================================== -->
-    <!-- Start right Content here -->
-    <!-- ============================================================== -->
-    <div class="content-page">
-        <!-- Start content -->
-       
-        @Body
-        <Footer></Footer>
-
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Right content here -->
-    <!-- ============================================================== -->
-
-    <RightSideBar/>
-
-</div>
-
-@code
-{
-    [Inject]
-    public IJSRuntime JsRuntime { get; set; }
-
-  
-
-    protected override async Task OnInitializedAsync()
+    private bool _drawerOpen = true;
+    private bool _themeManagerOpen = false;
+    private bool light = false;
+    private  string TitleToggle = "Dark";
+    void DrawerToggle()
     {
-
         
-
-            await JsRuntime.InvokeVoidAsync("AddSrc");
-
-        
+        _drawerOpen = !_drawerOpen;
     }
 
+    void ChangeLight()
+    {
+        if (light)
+        {
+            TitleToggle = "Dark";
+        }
+        else
+        {
+            TitleToggle = "Light";
+        }
+        light = !light;
+    }
+    void OpenThemeManager(bool value)
+    {
+        _themeManagerOpen = value;
+    }
 
+    void UpdateTheme(ThemeManagerTheme value)
+    {
+        _themeManager = value;
+        StateHasChanged();
+    }
 
+    protected override void OnInitialized()
+    {
+        _themeManager.Theme = new MudBlazorAdminDashboard();
+        _themeManager.DrawerClipMode = DrawerClipMode.Always;
+        _themeManager.FontFamily = "Montserrat";
+        _themeManager.DefaultBorderRadius = 3;
+    }
 
-
+    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
+{
+        new BreadcrumbItem("Personal", href: "#"),
+        new BreadcrumbItem("Dashboard", href: "#"),
+    };
 }

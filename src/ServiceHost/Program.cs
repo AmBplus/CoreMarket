@@ -1,6 +1,7 @@
 using Base.AspCoreUtility.Infrastructure.Settings;
 using Blazored.LocalStorage;
 using Microsoft.Extensions.Options;
+using MudBlazor.Services;
 using NLog;
 using NLog.Web;
 using ShopManagement.Infrastructure.ConfigureServices;
@@ -41,7 +42,7 @@ try
     #region BlazorAdminService
     builder.Services.AddBlazoredLocalStorage();
     builder.Services.AddServerSideBlazor();
-
+    
 
     #endregion
 

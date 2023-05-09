@@ -1,0 +1,16 @@
+﻿<MudMenu AnchorOrigin="@(AnchorOrigin)" TransformOrigin="@(TransformOrigin)" Dense="true" Class="mt-1 ml-4">
+    <ActivatorContent>
+        <MudAvatar Image="assets/images/avatar-1.jpg" />
+    </ActivatorContent>
+    <ChildContent>
+        <PersonCard Class="mt-n2" />
+        <MudDivider Class="mb-2" />
+        <MudListItem Text="Account" Icon="@Icons.Material.Outlined.Person" Href="/personal/account" />
+        <MudListItem Text="Logout" Icon="@Icons.Material.Outlined.Login" Href="/pages/authentication/login" />
+    </ChildContent>
+</MudMenu>
+@code
+{
+    [Parameter] public Origin AnchorOrigin { get; set; }
+    [Parameter] public Origin TransformOrigin { get; set; }
+}

@@ -11,14 +11,12 @@
         <MudAppBar  Elevation="4">
 
             <MudIconButton Size="Size.Large" Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-            <MudHidden Breakpoint="Breakpoint.Xs">
                 <MudText Typo="Typo.h6" Class="ml-4">پنل مدیریت</MudText>
-            </MudHidden>
-            <MudHidden Breakpoint="Breakpoint.Xs" Invert="true">
-                <MudText Typo="Typo.subtitle2">پنل مدیریت</MudText>
-            </MudHidden>
+          
             <MudSpacer />
-            <MudSwitch   CheckedChanged="@(ChangeLight)"  Class="ml-4" T="bool" Label="@TitleToggle"/>
+            <MudToggleIconButton @bind-Toggled="@(light)"
+                                 Icon="@Icons.Material.Filled.ModeNight" Color="Color.Dark" Title="Dark"
+                                 ToggledIcon="@Icons.Material.Filled.WbSunny" ToggledColor="Color.Warning" ToggledTitle="Light"/>
 
             <MudMenu Class="ml-4" Icon="@Icons.Material.Outlined.Translate" Color="Color.Inherit" AnchorOrigin="Origin.BottomCenter" TransformOrigin="Origin.TopCenter" Dense="true">
                 <MudMenuItem>English</MudMenuItem>
@@ -47,13 +45,8 @@
             <NavMenu />
         </MudDrawer>
         <MudMainContent>
-            <MudHidden Breakpoint="Breakpoint.SmAndDown">
-                <MudToolBar DisableGutters="true">
-                    <MudSpacer />
-
-                </MudToolBar>
-            </MudHidden>
-            <MudContainer MaxWidth="MaxWidth.False" Class="mt-4">
+            
+            <MudContainer MaxWidth="MaxWidth.False" Class="mt-15">
                 @Body
             </MudContainer>
         </MudMainContent>
@@ -78,18 +71,8 @@
         _drawerOpen = !_drawerOpen;
     }
 
-    void ChangeLight()
-    {
-        if (light)
-        {
-            TitleToggle = "Dark";
-        }
-        else
-        {
-            TitleToggle = "Light";
-        }
-        light = !light;
-    }
+   
+    
     void OpenThemeManager(bool value)
     {
         _themeManagerOpen = value;
@@ -109,9 +92,5 @@
         _themeManager.DefaultBorderRadius = 3;
     }
 
-    private List<BreadcrumbItem> _items = new List<BreadcrumbItem>
-{
-        new BreadcrumbItem("Personal", href: "#"),
-        new BreadcrumbItem("Dashboard", href: "#"),
-    };
+   
 }

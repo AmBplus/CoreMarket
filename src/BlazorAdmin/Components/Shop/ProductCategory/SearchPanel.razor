@@ -1,0 +1,110 @@
+﻿<MudHidden Breakpoint="Breakpoint.LgAndUp" Invert="true">
+    <MudPaper Class="pa-8 mt-2 d-flex " Style="width: 100%;flex-wrap: wrap" Elevation="3">
+        <MudTextField @bind-Value="Search" Style="max-width: 33vh" Label="جستجو" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
+        <div style="display: flex;align-items: flex-end">
+            <MudButton Class="ml-4 mr-4" Style="height: 56px" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>جستجو</MudText>
+                }
+            </MudButton>
+            <MudButton Disabled="@_processing" Style="height: 56px" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>نمایش همه</MudText>
+                }
+            </MudButton>
+        </div>
+
+
+    </MudPaper>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.Md" Invert="true">
+    <MudPaper Class="pa-8 mt-2 d-flex " Style="width: 100%;flex-wrap: wrap" Elevation="3">
+        <div class="ml-2" style="width: 100%">
+            <MudTextField @bind-Value="Search" Style="width: 100%" Label="جستجو" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
+
+        </div>
+        <div class="mt-2">
+            <MudButton Class="ml-4" Style="height: 56px" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>جستجو</MudText>
+                }
+            </MudButton>
+            <MudButton Class="" Style="height: 56px" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>نمایش همه</MudText>
+                }
+            </MudButton>
+        </div>
+
+
+    </MudPaper>
+</MudHidden>
+<MudHidden Breakpoint="Breakpoint.SmAndDown" Invert="true">
+    <MudPaper Class="pa-8 mt-2 d-flex " Style="width: 100%;flex-wrap: wrap" Elevation="3">
+        <div class="ml-2" style="width: 100%">
+            <MudTextField @bind-Value="Search" Style="width: 100%" Label="جستجو" Variant="Variant.Outlined" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" AdornmentColor="Color.Primary" />
+
+        </div>
+        <div class="mt-2">
+            <MudButton Class="ml-4" Style="height: 56px" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>جستجو</MudText>
+                }
+            </MudButton>
+            <MudButton Class="" Style="height: 56px" Disabled="@_processing" OnClick="ProcessSomething" Variant="Variant.Filled" Color="Color.Primary">
+                @if (_processing)
+                {
+                    <MudProgressCircular Class="ms-n1" Size="Size.Small" Indeterminate="true" />
+                    <MudText Class="ms-2">Processing</MudText>
+                }
+                else
+                {
+                    <MudText>نمایش همه</MudText>
+                }
+            </MudButton>
+        </div>
+
+
+    </MudPaper>
+</MudHidden>
+@code {
+    private bool _processing = false;
+    public string Search { get; set; }
+
+    async Task ProcessSomething()
+    {
+        _processing = true;
+        await Task.Delay(2000);
+        _processing = false;
+    }
+}

@@ -1,0 +1,292 @@
+﻿
+@using BlazorAdmin.Model
+@using System.Xml.Serialization
+
+<MudPaper Class="pa-8 mt-5 d-flex ; flex-column">
+        
+    <div class="mb-10 " style="width: 30vh">
+       
+        <MudTextField @bind-Value="_searchString" Immediate="true" Adornment="Adornment.End" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" Label="جستجو" Variant="Variant.Text"></MudTextField>
+
+    </div>
+    <div>
+        <MudTable Filter="@_quickFilter"  Items="@ElemEnumerable" Hover="true"  Striped="true" Breakpoint="Breakpoint.None" >
+            <HeaderContent >
+                <MudTh Style="font-weight: bold; font-size:1.3rem; color:black">Id</MudTh>
+                <MudTh Style="font-weight: bold; font-size:1.3rem; color:black">Name</MudTh>
+                <MudTh Style="font-weight: bold; font-size:1.3rem; color:black">Image</MudTh>
+                <MudTh Style="font-weight: bold; font-size:1.3rem; color:black">Creation Date</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd Style="font-size:1.15rem;border-left:1px solid #e0e0e0ff;" DataLabel="Nr">@context.Id</MudTd>
+                <MudTd Style="font-size:1.15rem;border-left:1px solid #e0e0e0ff;" DataLabel="Sign">@context.Name</MudTd>
+                <MudTd Style="font-size:1.15rem;border-left:1px solid #e0e0e0ff;" DataLabel="Name">@context.ImageSrc</MudTd>
+                <MudTd Style="font-size:1.15rem; " DataLabel="Position">@context.CreationDate</MudTd>
+            </RowTemplate>
+       
+            <PagerContent >
+                <MudTablePager Style="direction: ltr;flex-direction: row-reverse" FirstIcon="@Icons.Material.Filled.LastPage" NextIcon="@Icons.Material.Filled.KeyboardArrowLeft" BeforeIcon="@Icons.Material.Filled.KeyboardArrowRight" LastIcon="@Icons.Material.Filled.FirstPage" PageSizeOptions="new int[] { 10, 25, 50, 100, int.MaxValue }" RowsPerPageString=":تعداد سطر" />
+            </PagerContent>
+        </MudTable>
+    </div>
+        @* <MudDataGrid  Hover="true" Style="width: 100%;border-color: gainsboro" Striped="true" ReadOnly="true" Bordered="true"  T="text" MultiSelection="false" Items="@ElemEnumerable" SortMode="SortMode.Multiple" QuickFilter="@_quickFilter" *@
+        @*              Hideable="false" > *@
+        @* *@
+        @*     <Columns> *@
+        @*     <PropertyColumn CellStyle="font-size:1.15rem;" HeaderStyle="font-weight: bold; font-size:1.3rem; color:black" Property="x => x.Id" /> *@
+        @*     <PropertyColumn CellStyle="font-size:1.15rem" HeaderStyle="font-weight: bold; font-size:1.3rem; color:black"  Property="x => x.Name" SortBy="@_sortBy" /> *@
+        @*     <PropertyColumn CellStyle="font-size:1.15rem;border-left:1px solid #e0e0e0ff" HeaderStyle="font-weight: bold; font-size:1.3rem; color:black" Property="x => x.ImageSrc" /> *@
+        @*     <PropertyColumn CellStyle="font-size:1.15rem;" HeaderStyle="font-weight: bold; font-size:1.3rem; color:black" Property="x => x.CreationDate" Title="Molar mass"> *@
+        @*             <EditTemplate> *@
+        @* *@
+        @*             </EditTemplate> *@
+        @*         </PropertyColumn> *@
+        @*     </Columns> *@
+        @*     <PagerContent> *@
+        @*         <MudDataGridPager T="text" Style="direction: ltr" PageSizeOptions="true" /> *@
+        @*     </PagerContent> *@
+        @* </MudDataGrid> *@
+        @* *@
+
+</MudPaper>
+
+@code {
+    private string infoFormat = "{first_item}-{last_item} of {all_items}";
+
+    public IEnumerable<text> ElemEnumerable = new List<text>();
+    private string _searchString;
+    private bool _sortNameByLength;
+    private List<string> _events = new();
+    // custom sort by name length
+    private bool _loading;
+
+    private Func<text, object> _sortBy => x =>
+    {
+        if (_sortNameByLength)
+            return x.Name.Length;
+        else
+            return x.Name;
+    };
+    // quick filter - filter gobally across multiple columns with the same input
+    private Func<text, bool> _quickFilter => x =>
+    {
+        if (string.IsNullOrWhiteSpace(_searchString))
+            return true;
+
+        if (x.Name.Contains(_searchString, StringComparison.OrdinalIgnoreCase))
+            return true;
+
+       
+
+        if ($"{x.Id} {x.Name}".Contains(_searchString))
+            return true;
+
+        return false;
+    };
+
+    protected override async Task OnInitializedAsync()
+    {
+        ElemEnumerable = new List<text>()
+        {
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 1,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 2,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 3,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 4,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 5,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 6,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 7,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 8,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 9,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 10,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 11,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 12,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 13,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 14,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 15,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 16,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 17,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 18,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 19,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 20,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 21,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 22,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 23,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 24,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:50",
+                Id = 25,
+                ImageSrc = "Image/Test1",
+                Name = "ali"
+            },
+            new text()
+            {
+                CreationDate = "12:51",
+                Id = 26,
+                ImageSrc = "Image/Test2",
+                Name = "sadegh"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 27,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            },
+            new text()
+            {
+                CreationDate = "12:52",
+                Id = 28,
+                ImageSrc = "Image/Test3",
+                Name = "reza"
+            }
+        };
+    
+
+    }
+
+}

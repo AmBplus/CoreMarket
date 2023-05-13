@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ShopManagement.Application.Contract.ProductCategoryApplication;
 
-public class UpdateProductCategory : CreateProductCategory
+public class UpdateProductCategoryDto : CreateProductCategoryDTO
 {
     [Display(ResourceType = typeof(PropertiesName),Name = nameof(PropertiesName.Id))]
     [Range(minimum:1,maximum:long.MaxValue,ErrorMessageResourceType = typeof(ErrorMessages)

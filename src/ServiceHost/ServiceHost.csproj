@@ -38,6 +38,7 @@
     <ProjectReference Include="..\Base\Base.Resourses\Base.Resourses.csproj" />
     <ProjectReference Include="..\BlazorAdmin\BlazorAdmin.csproj" />
     <ProjectReference Include="..\BlazorShared\BlazorShared.csproj" />
+    <ProjectReference Include="..\ShopManagement\Api\ShopManagement.Api\ShopManagement.Api.csproj" />
     <ProjectReference Include="..\ShopManagement\Core\ShopManagement.Application.Contract\ShopManagement.Application.Contract.csproj" />
     <ProjectReference Include="..\ShopManagement\Infrastructure\ShopManagement.Infrastructure\ShopManagement.Infrastructure.csproj" />
   </ItemGroup>

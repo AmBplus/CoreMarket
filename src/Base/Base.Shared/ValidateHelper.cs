@@ -27,7 +27,7 @@ public static class ValidationHelper
             Validator
                 .TryValidateObject(instance: entity, validationContext: validationContext,
                     validationResults: validationResults, validateAllProperties: true);
-
+        
         return isValid;
     }
 

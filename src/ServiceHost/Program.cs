@@ -22,19 +22,20 @@ try
     //builder.Services.AddSingleton<ILoggerManger, LoggerManger>();
     //builder.Services.AddSingleton(typeof(ILoggerManger<>), typeof(LoggerManger<>));
     #endregion /NLog
-
+  
     #region Routing
 
-    builder.Services.AddRouting(op =>
-    {
-        op.LowercaseUrls = true;
-        op.LowercaseQueryStrings = true;
-    });
+    // builder.Services.AddRouting(op =>
+    // {
+    //     op.LowercaseUrls = true;
+    //     op.LowercaseQueryStrings = true;
+    // });
 
     #endregion /Routing
-
-    builder.Services.AddRazorPages();
     builder.Services.AddControllers();
+    builder.Services.AddRazorPages();
+
+
     builder.Services.ShopManagementBootstrapper(builder.Configuration);
     builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
     // Custom LogManger
@@ -99,10 +100,10 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthorization();
-
 app.MapRazorPages();
-// app.MapAreaControllerRoute(name: "default", areaName: "Admin", pattern: "{area:Admin}");
 app.MapControllers();
+
+// app.MapAreaControllerRoute(name: "default", areaName: "Admin", pattern: "{area:Admin}");
 
 
 app.Run();

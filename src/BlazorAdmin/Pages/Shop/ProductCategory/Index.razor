@@ -1,7 +1,8 @@
-﻿@page "/shop/category/"
+﻿@page "/admin/shop/category/"
 @using BlazorAdmin.Components.Shop.ProductCategory
-@using BlazorAdmin.Components.Shop.Shared
 @using BlazorAdmin.Model
+@inject HttpClient Http
+<h1>@Http.BaseAddress</h1>
 <div style="display: flex">
     <MudBreadcrumbs Class="pt-0 mb-10" Items="_items"></MudBreadcrumbs>
 
@@ -50,8 +51,14 @@
         new BreadcrumbItem("دسته محصولات", href: "/shop/category/")
     };
 
-    protected override void OnInitialized()
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
+        var response = await Http.GetAsync("api/productcategory/Get");
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        
         col = new() { "Id","Name","Image" ,"Creation Date"};
         El = new()
         {

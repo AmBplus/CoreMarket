@@ -62,6 +62,7 @@ public class BaseGenericRepository<Tkey, TEntity> : IBaseGenericRepository<Tkey,
         List<TEntity> result;
         if (!query.Contains("@"))
         {
+            
             result = await DbSetEntity.FromSqlRaw(query).HandleTracking(track).ToListAsync();
         }
         else

@@ -29,7 +29,7 @@
             </PagerContent>
         </MudTable>
     </div>
-        @* <MudDataGrid  Hover="true" Style="width: 100%;border-color: gainsboro" Striped="true" ReadOnly="true" Bordered="true"  T="text" MultiSelection="false" Items="@ElemEnumerable" SortMode="SortMode.Multiple" QuickFilter="@_quickFilter" *@
+        @* <MudDataGrid  Hover="true" Style="width: 100%;border-color: gainsboro" Striped="true" ReadOnly="true" Bordered="true"  T="test" MultiSelection="false" Items="@ElemEnumerable" SortMode="SortMode.Multiple" QuickFilter="@_quickFilter" *@
         @*              Hideable="false" > *@
         @* *@
         @*     <Columns> *@
@@ -43,7 +43,7 @@
         @*         </PropertyColumn> *@
         @*     </Columns> *@
         @*     <PagerContent> *@
-        @*         <MudDataGridPager T="text" Style="direction: ltr" PageSizeOptions="true" /> *@
+        @*         <MudDataGridPager T="test" Style="direction: ltr" PageSizeOptions="true" /> *@
         @*     </PagerContent> *@
         @* </MudDataGrid> *@
         @* *@
@@ -53,14 +53,14 @@
 @code {
     private string infoFormat = "{first_item}-{last_item} of {all_items}";
 
-    public IEnumerable<text> ElemEnumerable = new List<text>();
+    public IEnumerable<test> ElemEnumerable = new List<test>();
     private string _searchString;
     private bool _sortNameByLength;
     private List<string> _events = new();
     // custom sort by name length
     private bool _loading;
 
-    private Func<text, object> _sortBy => x =>
+    private Func<test, object> _sortBy => x =>
     {
         if (_sortNameByLength)
             return x.Name.Length;
@@ -68,7 +68,7 @@
             return x.Name;
     };
     // quick filter - filter gobally across multiple columns with the same input
-    private Func<text, bool> _quickFilter => x =>
+    private Func<test, bool> _quickFilter => x =>
     {
         if (string.IsNullOrWhiteSpace(_searchString))
             return true;
@@ -86,198 +86,198 @@
 
     protected override async Task OnInitializedAsync()
     {
-        ElemEnumerable = new List<text>()
+        ElemEnumerable = new List<test>()
         {
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 1,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 2,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 3,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 4,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 5,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 6,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 7,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 8,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 9,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 10,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 11,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 12,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 13,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 14,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 15,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 16,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 17,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 18,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 19,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 20,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 21,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 22,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 23,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 24,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:50",
                 Id = 25,
                 ImageSrc = "Image/Test1",
                 Name = "ali"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:51",
                 Id = 26,
                 ImageSrc = "Image/Test2",
                 Name = "sadegh"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 27,
                 ImageSrc = "Image/Test3",
                 Name = "reza"
             },
-            new text()
+            new test()
             {
                 CreationDate = "12:52",
                 Id = 28,

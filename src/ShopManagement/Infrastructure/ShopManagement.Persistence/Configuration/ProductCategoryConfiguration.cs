@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Xml.Serialization;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using ShopManagement.Domain.ProductAggregate.ProductCategoryModel;
 
@@ -19,7 +20,6 @@ public class ProductCategoryConfiguration : IEntityTypeConfiguration<ProductCate
         builder.Property(x => x.ImageSrc).HasMaxLength(1000);
         builder.Property(x => x.ImageAlt).HasMaxLength(250);
         builder.Property(x => x.ImageTitle).HasMaxLength(500);
-
     }
 }
 

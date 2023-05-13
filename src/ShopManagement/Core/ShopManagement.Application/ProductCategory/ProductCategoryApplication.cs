@@ -22,7 +22,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<ResultOperation> Create(CreateProductCategory command , CancellationToken cancellationToke = default)
+    public async Task<ResultOperation> Create(CreateProductCategoryDTO command , CancellationToken cancellationToke = default)
     {
         var result = command.GetValidationResults();
         if (result.Count > 0)
@@ -35,7 +35,7 @@ public class ProductCategoryApplication : IProductCategoryApplication
         return ResultOperation.BuildSuccessResult();
     }
 
-    public async Task<ResultOperation> Edit(UpdateProductCategory command ,CancellationToken cancellationToken = default)
+    public async Task<ResultOperation> Edit(UpdateProductCategoryDto command ,CancellationToken cancellationToken = default)
     {
         var result = command.GetValidationResults();
         if (result.Count > 0)
@@ -50,30 +50,30 @@ public class ProductCategoryApplication : IProductCategoryApplication
         return ResultOperation.BuildSuccessResult();
     }
 
-    public async Task<ResultOperation<UpdateProductCategory>> GetDetail(long id, CancellationToken cancellationToken = default)
+    public async Task<ResultOperation<UpdateProductCategoryDto>> GetDetail(long id, CancellationToken cancellationToken = default)
     {   
-        UpdateProductCategory details = new UpdateProductCategory();
+        UpdateProductCategoryDto details = new UpdateProductCategoryDto();
         var entity = await _repository.Get(x => x.Id == id);
         if (entity == null) return details.ToFailed("انتیتی یافت نشد ");
-        details = entity.Adapt<UpdateProductCategory>();
+        details = entity.Adapt<UpdateProductCategoryDto>();
         return details.ToSuccessResult();
     }
 
     public async Task<ResultOperation<IEnumerable<ProductCategoryViewModel>>> Search(
-        ProductCategorySearchModel searchModel, CancellationToken cancellationToken = default)
+        ProductCategorySearchModelDTO searchModelDto, CancellationToken cancellationToken = default)
     {
         
         // Generate Query 
         string query = @$"select * from ProductCategories pc 
         where 1 = 1
-        {(string.IsNullOrWhiteSpace(searchModel?.Name) ? "":$"And pc.Name LIKE @{nameof(searchModel.Name)}" )}" ;
+        {(string.IsNullOrWhiteSpace(searchModelDto?.Name) ? "":$"And pc.Name LIKE @{nameof(searchModelDto.Name)}" )}" ;
 
         var sqlParamerter = new SqlParameter[]
         {
             new SqlParameter()
             {
-                ParameterName = $"@{nameof(searchModel.Name)}",
-                Value = $"%{searchModel.Name}%",
+                ParameterName = $"@{nameof(searchModelDto.Name)}",
+                Value = $"%{searchModelDto.Name}%",
             },
         };
         // Get Result 

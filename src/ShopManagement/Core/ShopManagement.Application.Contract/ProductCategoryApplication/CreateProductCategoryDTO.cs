@@ -5,7 +5,7 @@ namespace ShopManagement.Application.Contract.ProductCategoryApplication;
 
 
 
-public class CreateProductCategory
+public class CreateProductCategoryDTO
 {
     [Display(ResourceType = typeof(PropertiesName), Name = nameof(PropertiesName.Name))]
     [Required(ErrorMessageResourceType = typeof(ErrorMessages), ErrorMessageResourceName = nameof(ErrorMessages.RequiredWithFieldName))]

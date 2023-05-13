@@ -13,14 +13,14 @@ namespace ShopManagement.Application.Contract.Maping
 {
     public static class Mapping_ShopManagement_Extensions
     {
-        public static ProductCategoryEntity MapToProductCategory(this CreateProductCategory entity)
+        public static ProductCategoryEntity MapToProductCategory(this CreateProductCategoryDTO entity)
         {
             return new ProductCategoryEntity(entity.Name, entity.Description,
                 entity.ImageSrc,
                 entity.ImageAlt, entity.ImageTitle, entity.Keywords,
                 entity.MetaDescription, entity.Slug.Slugify());
         }
-        public static ProductCategoryEntity MapToProductCategory(this UpdateProductCategory entity , ProductCategoryEntity productCategoryEntity)
+        public static ProductCategoryEntity MapToProductCategory(this UpdateProductCategoryDto entity , ProductCategoryEntity productCategoryEntity)
         {
             productCategoryEntity.Edit(entity.Name, entity.Description,
                 entity.ImageSrc,

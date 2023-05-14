@@ -1,5 +1,7 @@
 using Base.AspCoreUtility.Infrastructure.Settings;
+using BlazorAdmin;
 using Blazored.LocalStorage;
+using Microsoft.AspNetCore.Http.Connections;
 using Microsoft.Extensions.Options;
 using MudBlazor.Services;
 using NLog;
@@ -102,6 +104,7 @@ app.UseRouting();
 app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllers();
+app.MapFallbackToFile("admin/{*path:nonfile}", "index.html");
 
 // app.MapAreaControllerRoute(name: "default", areaName: "Admin", pattern: "{area:Admin}");
 

@@ -2,7 +2,8 @@
 
 namespace BlazorAdmin.Model
 {
-    public class text
+    // for test 
+    public class test
     {
         public long Id { get; set; }
         public string Name { get; set; }
